@@ -1,13 +1,17 @@
+import Layout from 'components/Layout';
+import StayContextProvider from 'context/StayContext';
 import Head from 'next/head';
 
 const Home: React.FC = () => {
     return (
         <>
             <Head>
-                <title>Homepage</title>
+                <title>Windbnb</title>
             </Head>
             <main>
-                <h1>Homepage</h1>
+                <StayContextProvider>
+                    <Layout />
+                </StayContextProvider>
             </main>
         </>
     );
