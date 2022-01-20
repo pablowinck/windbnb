@@ -1,5 +1,5 @@
 import { staysData } from 'data/stays';
-import { createContext, FC, useContext, useState } from 'react';
+import { createContext, FC, useContext, useEffect, useState } from 'react';
 
 export type Stay = {
     city: string;
@@ -28,6 +28,18 @@ const StayContextProvider: FC = ({ children }) => {
     const [stays, setStays] = useState<Stay[]>(staysData);
     const [location, setLocation] = useState<string>('');
     const [guests, setGuests] = useState<number>(0);
+
+    useEffect(() => {
+        const filteredStays = staysData.filter((stay) => {
+            const locationMatch = stay.city
+                .toLowerCase()
+                .includes(location.toLowerCase());
+            const guestsMatch = stay.maxGuests >= guests;
+
+            return locationMatch && guestsMatch;
+        });
+        setStays(filteredStays);
+    }, [location, guests]);
 
     const value = {
         stays: stays,
