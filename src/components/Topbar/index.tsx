@@ -1,3 +1,4 @@
+import { useModalContext } from 'context/ModalContext';
 import React from 'react';
 import {
     Container,
@@ -10,6 +11,7 @@ import {
 } from './styles';
 
 const Topbar: React.FC = () => {
+    const { setSearchModal } = useModalContext();
     return (
         <Container>
             <Logotipo
@@ -19,7 +21,7 @@ const Topbar: React.FC = () => {
                 width={100}
             />
 
-            <SearchContent>
+            <SearchContent onClick={() => setSearchModal(true)}>
                 <Location>Set location</Location>
                 <Guests>Add guests</Guests>
                 <SearchButton>

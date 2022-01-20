@@ -1,4 +1,5 @@
 import Layout from 'components/Layout';
+import ModalContextProvider from 'context/ModalContext';
 import StayContextProvider from 'context/StayContext';
 import Head from 'next/head';
 
@@ -10,7 +11,9 @@ const Home: React.FC = () => {
             </Head>
             <main>
                 <StayContextProvider>
-                    <Layout />
+                    <ModalContextProvider>
+                        <Layout />
+                    </ModalContextProvider>
                 </StayContextProvider>
             </main>
         </>
