@@ -46,10 +46,11 @@ export const SearchButton = styled.div`
     transition: background-color 0.3s ease-in-out;
 
     &:hover {
-        background-color: ${(props) => props.theme.colors.primary.main};
+        background-color: ${(props) => props.theme.colors.text.light};
     }
 `;
 
 export const SearchIcon = styled(Search)`
     width: 1rem;
+    color: ${(props) => props.theme.colors.primary.main};
 `;
