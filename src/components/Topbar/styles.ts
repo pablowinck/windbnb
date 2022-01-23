@@ -5,6 +5,11 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 1rem;
+    }
 `;
 export const Logotipo = styled(Image)``;
 export const SearchContent = styled.div`

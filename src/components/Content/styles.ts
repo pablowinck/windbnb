@@ -9,6 +9,13 @@ export const Header = styled.div`
     user-select: none;
 
     margin-bottom: 2rem;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items: initial;
+        padding-left: 0.8rem;
+    }
 `;
 export const Title = styled.div`
     font-size: 1.5rem;

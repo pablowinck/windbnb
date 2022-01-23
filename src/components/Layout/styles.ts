@@ -17,6 +17,7 @@ export const Container = styled.div`
     padding: 3rem 15vw 1rem 15vw;
 
     @media (max-width: 600px) {
-        padding: 3rem 1rem 1rem 1rem;
+        grid-template-rows: 6rem auto 2rem;
+        padding: 2rem 0.2rem 1rem 0.2rem;
     }
 `;
