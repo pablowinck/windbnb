@@ -20,24 +20,39 @@ type StayContextType = {
     setLocation: (location: string) => void;
     guests: number;
     setGuests: (guests: number) => void;
+    allLocations: string[];
 };
 
 const StayContext = createContext({} as StayContextType);
 
+const handleAllLocations = (currentStays: Stay[]): string[] => {
+    let locations: string[] = [];
+    currentStays.forEach((stay) => {
+        if (!locations.includes(stay.city + ', ' + stay.country)) {
+            locations.push(stay.city + ', ' + stay.country);
+        }
+    });
+    return locations;
+};
+
 const StayContextProvider: FC = ({ children }) => {
     const [stays, setStays] = useState<Stay[]>(staysData);
-    const [location, setLocation] = useState<string>('');
+    const [allLocations, setAllLocations] = useState<string[]>(
+        handleAllLocations(staysData)
+    );
     const [guests, setGuests] = useState<number>(0);
+    const [location, setLocation] = useState<string>(allLocations[0]);
 
     useEffect(() => {
         const filteredStays = staysData.filter((stay) => {
             const locationMatch = stay.city
                 .toLowerCase()
-                .includes(location.toLowerCase());
+                .includes(location.toLowerCase().split(',')[0]);
             const guestsMatch = stay.maxGuests >= guests;
 
             return locationMatch && guestsMatch;
         });
+
         setStays(filteredStays);
     }, [location, guests]);
 
@@ -47,7 +62,8 @@ const StayContextProvider: FC = ({ children }) => {
         location: location,
         setLocation: setLocation,
         guests: guests,
-        setGuests: setGuests
+        setGuests: setGuests,
+        allLocations: allLocations
     };
 
     return (

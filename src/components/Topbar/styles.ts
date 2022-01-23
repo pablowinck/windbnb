@@ -24,8 +24,12 @@ const ParamsField = styled.div`
     color: ${(props) => props.theme.colors.text.main};
     user-select: none;
 
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+    padding: 0.75rem;
 
     cursor: pointer;
 `;
@@ -53,4 +57,11 @@ export const SearchButton = styled.div`
 export const SearchIcon = styled(Search)`
     width: 1rem;
     color: ${(props) => props.theme.colors.primary.main};
+`;
+
+export const Title = styled.div`
+    font-size: 0.65rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: ${(props) => props.theme.colors.text.dark};
 `;

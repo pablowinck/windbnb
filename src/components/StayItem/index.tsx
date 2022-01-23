@@ -17,7 +17,6 @@ type Props = {
 };
 
 const StayItem: React.FC<Props> = ({ stay }) => {
-    console.log(stay);
     return (
         <Container>
             <Photo image={stay.photo} />

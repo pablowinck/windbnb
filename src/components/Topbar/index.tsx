@@ -1,4 +1,5 @@
 import { useModalContext } from 'context/ModalContext';
+import { useStayContext } from 'context/StayContext';
 import React from 'react';
 import {
     Container,
@@ -7,11 +8,13 @@ import {
     Logotipo,
     SearchButton,
     SearchContent,
-    SearchIcon
+    SearchIcon,
+    Title
 } from './styles';
 
 const Topbar: React.FC = () => {
     const { setSearchModal } = useModalContext();
+    const { location, guests } = useStayContext();
     return (
         <Container>
             <Logotipo
@@ -22,8 +25,14 @@ const Topbar: React.FC = () => {
             />
 
             <SearchContent onClick={() => setSearchModal(true)}>
-                <Location>Set location</Location>
-                <Guests>Add guests</Guests>
+                <Location>
+                    <Title>location</Title>
+                    <p>{location}</p>
+                </Location>
+                <Guests>
+                    <Title>guests</Title>
+                    <p>{guests === 0 ? 'Add guests' : guests}</p>
+                </Guests>
                 <SearchButton>
                     <SearchIcon />
                 </SearchButton>

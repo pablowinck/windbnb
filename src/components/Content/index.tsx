@@ -4,12 +4,12 @@ import React from 'react';
 import { Container, Header, Items, MoreStays, Title } from './styles';
 
 const Content: React.FC = () => {
-    const { stays } = useStayContext();
+    const { stays, location } = useStayContext();
     return (
         <Container>
             <Header>
-                <Title>Stays in your region</Title>
-                <MoreStays>12+ stays</MoreStays>
+                <Title>Stays in {location}</Title>
+                <MoreStays>{stays.length}+ stays</MoreStays>
             </Header>
             <Items>
                 {stays.map(
